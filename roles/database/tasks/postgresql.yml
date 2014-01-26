@@ -31,3 +31,7 @@
   postgresql_db: name=app_{{app_name}} owner=deploy state=present
   sudo: yes
   sudo_user: postgres
+
+- name: add hstore
+  sudo_user: postgres
+  shell: psql app_{{app_name}} -c "CREATE EXTENSION IF NOT EXISTS hstore;"
